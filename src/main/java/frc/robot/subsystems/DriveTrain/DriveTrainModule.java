@@ -3,9 +3,7 @@ package frc.robot.subsystems.DriveTrain;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenixpro.hardware.CANcoder;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-public class DriveTrainModule extends SubsystemBase {
+public class DriveTrainModule{
 
   private final WPI_TalonFX DriveMotor;
   private final WPI_TalonFX StrafeMotor;
@@ -16,7 +14,5 @@ public class DriveTrainModule extends SubsystemBase {
     StrafeMotor =  new WPI_TalonFX(strafeMotor);
     Sensor = new CANcoder(sensor);
   }
-
-  @Override
-  public void periodic() {}
+  
 }

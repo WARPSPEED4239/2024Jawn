@@ -1,5 +1,7 @@
 package frc.robot;
 
+import java.lang.Math;
+
 public class Constants {
     public static final int 
         XBOX_CONTROLLER = 0,
@@ -21,4 +23,9 @@ public class Constants {
         PIGEON_IMU = 200,
 
         FILLER = 5318008;
+
+    public static final double
+        WHEEL_BASE_LENGTH = 0,
+        TRACK_WIDTH = 0,
+        ROOT = Math.sqrt(WHEEL_BASE_LENGTH * 2 + TRACK_WIDTH * 2);
 }
