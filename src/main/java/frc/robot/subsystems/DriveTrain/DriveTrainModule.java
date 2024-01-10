@@ -11,8 +11,7 @@ public class DriveTrainModule{
 
   public DriveTrainModule(int driveMotor, int strafeMotor, int sensor) {
     DriveMotor = new WPI_TalonFX(driveMotor);
-    StrafeMotor =  new WPI_TalonFX(strafeMotor);
+    StrafeMotor = new WPI_TalonFX(strafeMotor);
     Sensor = new CANcoder(sensor);
   }
-  
 }

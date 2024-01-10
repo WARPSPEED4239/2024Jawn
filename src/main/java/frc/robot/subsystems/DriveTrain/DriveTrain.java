@@ -15,41 +15,40 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {}
 
-  double calculateWheelSpeed(double strafeRight, double rotateClockwise, int wheel) {
+  double[][] calculateWheelSpeedAndAngle(double strafeRight, double rotateClockwise) {
     double A = strafeRight - rotateClockwise * (Constants.WHEEL_BASE_LENGTH / Constants.ROOT);
     double B = strafeRight + rotateClockwise * (Constants.WHEEL_BASE_LENGTH / Constants.ROOT);
     double C = strafeRight - rotateClockwise * (Constants.TRACK_WIDTH / Constants.ROOT);
     double D = strafeRight + rotateClockwise * (Constants.TRACK_WIDTH / Constants.ROOT);
 
-    if (wheel == 1) {
-        return Math.sqrt(Math.pow(B, 2) + Math.pow(C, 2));
-    } else if (wheel == 2) {
-        return Math.sqrt(Math.pow(B, 2) + Math.pow(D, 2));
-    } else if (wheel == 3) {
-        return Math.sqrt(Math.pow(A, 2) + Math.pow(D, 2));
-    } else if (wheel == 4) {
-        return Math.sqrt(Math.pow(A, 2) + Math.pow(C, 2));
-    } else {
-      return 0.0;
-    }
-  }
+    double wheelSpeedA = Math.sqrt(Math.pow(B, 2) + Math.pow(C, 2));
+    double wheelSpeedB = Math.sqrt(Math.pow(B, 2) + Math.pow(D, 2));
+    double wheelSpeedC = Math.sqrt(Math.pow(A, 2) + Math.pow(D, 2));
+    double wheelSpeedD = Math.sqrt(Math.pow(A, 2) + Math.pow(C, 2));
 
-  double calculateWheelAngle(double strafeRight, double rotateClockwise, int wheel) {
-    double A = strafeRight - rotateClockwise * (Constants.WHEEL_BASE_LENGTH / Constants.ROOT);
-    double B = strafeRight + rotateClockwise * (Constants.WHEEL_BASE_LENGTH / Constants.ROOT);
-    double C = strafeRight - rotateClockwise * (Constants.TRACK_WIDTH / Constants.ROOT);
-    double D = strafeRight + rotateClockwise * (Constants.TRACK_WIDTH / Constants.ROOT);
+    double wheelAngleA = Math.atan2(B,C) * 180 / Math.PI;
+    double wheelAngleB = Math.atan2(B,D) * 180 / Math.PI;
+    double wheelAngleC = Math.atan2(A,D) * 180 / Math.PI;
+    double wheelAngleD = Math.atan2(A,C) * 180 / Math.PI;
 
-    if (wheel == 1) {
-      return Math.atan2(B,C) * 180 / Math.PI;
-    } else if (wheel == 2) {
-      return Math.atan2(B,D) * 180 / Math.PI;
-    } else if (wheel == 3) {
-      return Math.atan2(A,D) * 180 / Math.PI;
-    } else if (wheel == 4) {
-      return Math.atan2(A,C) * 180 / Math.PI;
-    } else {
-      return 0.0;
+    double max = wheelSpeedA;
+    if (wheelSpeedB > max) {
+      max = wheelSpeedB;
     }
+    if (wheelSpeedC > max) {
+      max = wheelSpeedC;
+    }
+    if (wheelSpeedD> max) {
+      max = wheelSpeedD;
+    }
+    if (max > 1) {
+      wheelSpeedA /= max;
+      wheelSpeedB /= max;
+      wheelSpeedC /= max;
+      wheelSpeedD /= max;
+    }
+    double[][] wheelSettings = {{wheelSpeedA, wheelSpeedB, wheelSpeedC, wheelSpeedD},
+                                {wheelAngleA, wheelAngleB, wheelAngleC, wheelAngleD}};
+    return wheelSettings;
   }
 }
