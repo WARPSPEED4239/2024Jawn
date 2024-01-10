@@ -10,8 +10,6 @@ public class RobotContainer {
   private final CommandXboxController mController = new CommandXboxController(Constants.XBOX_CONTROLLER);
   private final CommandJoystick mJoystick = new CommandJoystick(Constants.JOYSTICK);
 
-
-
   public RobotContainer() {
     configureBindings();
   }
