@@ -7,6 +7,8 @@ public class Constants {
         XBOX_CONTROLLER = 0,
         JOYSTICK = 1,
 
+        TIMEOUT_MS = 100,
+        
         DRIVEMOTOR_1 = 101,
         SWERVEMOTOR_1 = 102,
         CAMCODER_1 = 103,
