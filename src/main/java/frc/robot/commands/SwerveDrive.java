@@ -1,19 +1,18 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.DriveTrain.DriveTrain;
 
 public class SwerveDrive extends CommandBase {
 
   private DriveTrain mDriveTrain;
-  private CommandXboxController mXBoxController;
+  private CommandXboxController mXboxController;
 
   public SwerveDrive(DriveTrain driveTrain, CommandXboxController XBoxController) {
+    
     mDriveTrain = driveTrain;
-    mXBoxController = XBoxController;
+    mXboxController = XBoxController;
 
     addRequirements(mDriveTrain);
   }
@@ -23,9 +22,9 @@ public class SwerveDrive extends CommandBase {
 
   @Override
   public void execute() {
-    double y = -mXBoxController.getLeftY();
-    double x = mXBoxController.getLeftX();
-    double z = mXBoxController.getRightX();
+    double y = -mXboxController.getLeftY();
+    double x = mXboxController.getLeftX();
+    double z = mXboxController.getRightX();
     double[][] calculations = mDriveTrain.calculateWheelSpeedAndAngle(y, x, z);
 
     mDriveTrain.drive(calculations);

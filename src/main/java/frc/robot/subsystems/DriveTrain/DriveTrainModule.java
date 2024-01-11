@@ -1,16 +1,16 @@
 package frc.robot.subsystems.DriveTrain;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
-import com.ctre.phoenixpro.hardware.CANcoder;
 
 import frc.robot.Constants;
+import frc.robot.tools.SRXUnitConversion;
 
 public class DriveTrainModule{
 
   private final WPI_TalonFX DriveMotor;
   private final WPI_TalonFX SpinMotor;
-  private final CANcoder Sensor;
 
   private double kP_speed = 0.0;
   private double kI_speed = 0.0;
@@ -26,7 +26,6 @@ public class DriveTrainModule{
   public DriveTrainModule(int driveMotor, int strafeMotor, int sensor) {
     DriveMotor = new WPI_TalonFX(driveMotor);
     SpinMotor = new WPI_TalonFX(strafeMotor);
-    Sensor = new CANcoder(sensor);
     configMotorSettings();
   }
 
@@ -40,12 +39,12 @@ public class DriveTrainModule{
     SpinMotor.config_kI(0, kI_angle, Constants.TIMEOUT_MS);
     SpinMotor.config_kD(0, kD_angle, Constants.TIMEOUT_MS);
     SpinMotor.config_kF(0, kF_angle, Constants.TIMEOUT_MS);
+
+    SpinMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, Constants.TIMEOUT_MS);
   }
 
   public void setMotorSpeedAndAngle(double speed, double angle) {
-    //pid stuff here 
-    //motion magic for setting angle
-    DriveMotor.set(ControlMode.Velocity, 0/*velocity to SRX Units */);
-    SpinMotor.set(ControlMode.MotionMagic, 0/*degrees to SRX Units */);
+    DriveMotor.set(ControlMode.Velocity, SRXUnitConversion.speedToSRXUnits(speed));
+    SpinMotor.set(ControlMode.MotionMagic, SRXUnitConversion.positionInDegreesToSRXUnits(angle));
   }
 }

@@ -2,7 +2,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.SwerveDrive;
 import frc.robot.subsystems.DriveTrain.DriveTrain;
@@ -10,8 +9,7 @@ import frc.robot.subsystems.DriveTrain.DriveTrain;
 public class RobotContainer {
 
   private final CommandXboxController mController = new CommandXboxController(Constants.XBOX_CONTROLLER);
-  private final CommandJoystick mJoystick = new CommandJoystick(Constants.JOYSTICK);
-
+  
   private final DriveTrain mDriveTrain = new DriveTrain();
 
   public RobotContainer() {

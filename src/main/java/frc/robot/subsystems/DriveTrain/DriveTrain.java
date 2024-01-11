@@ -5,10 +5,10 @@ import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
 
-  private final DriveTrainModule ModuleA = new DriveTrainModule(Constants.DRIVEMOTOR_1, Constants.SWERVEMOTOR_1, Constants.CAMCODER_1);
-  private final DriveTrainModule ModuleB = new DriveTrainModule(Constants.DRIVEMOTOR_2, Constants.SWERVEMOTOR_2, Constants.CAMCODER_2);
-  private final DriveTrainModule ModuleC = new DriveTrainModule(Constants.DRIVEMOTOR_3, Constants.SWERVEMOTOR_3, Constants.CAMCODER_3);
-  private final DriveTrainModule ModuleD = new DriveTrainModule(Constants.DRIVEMOTOR_4, Constants.SWERVEMOTOR_4, Constants.CAMCODER_4);
+  private final DriveTrainModule ModuleA = new DriveTrainModule(Constants.DRIVEMOTOR_1, Constants.SWERVEMOTOR_1, Constants.CANCODER_1);
+  private final DriveTrainModule ModuleB = new DriveTrainModule(Constants.DRIVEMOTOR_2, Constants.SWERVEMOTOR_2, Constants.CANCODER_2);
+  private final DriveTrainModule ModuleC = new DriveTrainModule(Constants.DRIVEMOTOR_3, Constants.SWERVEMOTOR_3, Constants.CANCODER_3);
+  private final DriveTrainModule ModuleD = new DriveTrainModule(Constants.DRIVEMOTOR_4, Constants.SWERVEMOTOR_4, Constants.CANCODER_4);
   
   public DriveTrain() {}
 
