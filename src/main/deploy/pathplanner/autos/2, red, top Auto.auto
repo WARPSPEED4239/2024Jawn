@@ -2,7 +2,7 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 2.0,
+      "x": 14.6,
       "y": 7.0
     },
     "rotation": 0
@@ -14,12 +14,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Straight Path"
+            "pathName": " 2, red , top"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Red Folder",
   "choreoAuto": false
 }

@@ -44,7 +44,7 @@ public class RobotContainer {
         drivetrain.applyRequest(() -> drive.withVelocityX(-mXboxController.getLeftY() * MaxSpeed)             // -y forward
                                            .withVelocityY(-mXboxController.getLeftX() * MaxSpeed)             // -x forward
                                            .withRotationalRate(-mXboxController.getRightX() * MaxAngularRate) // -x counterclockwise
-                               ));                                                                            // Sam owes Vince 2 buckros
+                               ));                                                                            
     
     mXboxController.a().whileTrue(drivetrain.applyRequest(() -> brake));
     mXboxController.b().whileTrue(drivetrain
