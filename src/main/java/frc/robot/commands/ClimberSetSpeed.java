@@ -24,17 +24,13 @@ public class ClimberSetSpeed extends Command {
   public void execute() {
     if (mController.leftBumper().getAsBoolean()) {
       mClimber.setLeftMotorSpeed(mSpeed);
-    }
-
-    if (mController.leftTrigger().getAsBoolean()) {
+    } else if (mController.leftTrigger().getAsBoolean()) {
       mClimber.setLeftMotorSpeed(-mSpeed);
     }
 
     if (mController.rightBumper().getAsBoolean()) {
       mClimber.setRightMotorSpeed(mSpeed);
-    }
-
-    if (mController.rightTrigger().getAsBoolean()) {
+    } else if (mController.rightTrigger().getAsBoolean()) {
       mClimber.setRightMotorSpeed(-mSpeed);
     }
   }

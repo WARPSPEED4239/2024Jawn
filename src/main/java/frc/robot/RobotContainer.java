@@ -14,9 +14,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.ClimberSetSpeed;
 import frc.robot.commands.CommandSwerveDrivetrain;
-import frc.robot.commands.ShooterSetSpeed;
 import frc.robot.commands.intake.SetFeedSpeed;
 import frc.robot.commands.intake.SetPivotState;
+import frc.robot.commands.shooter.IntakeToShooter;
+import frc.robot.commands.shooter.ShooterSetSpeed;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
@@ -63,6 +64,7 @@ public class RobotContainer {
     mXboxController.leftStick().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
     mXboxController.x().whileTrue(new SetPivotState(mIntake, 0.05));
     mJoystick.trigger().whileTrue(new SetFeedSpeed(mIntake, 0.05));
+    mJoystick.button(1).whileTrue(new IntakeToShooter(mIntake, mShooter, 0.05, 0.05));
 
     if (Utils.isSimulation()) {
       drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));

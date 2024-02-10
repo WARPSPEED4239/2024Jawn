@@ -19,9 +19,9 @@ public class SetPivotState extends Command {
   public void initialize() {
     if (mIntake.getLimitDown()){
       mTargetState = true;
-      mSpeed *= -1;
     } else if (mIntake.getLimitUp()) {
       mTargetState = false;
+      mSpeed *= -1;
     }
   }
 
