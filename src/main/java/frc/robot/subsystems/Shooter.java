@@ -7,8 +7,8 @@ import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
 
-  private final static TalonFX Shooter1 = new TalonFX(Constants.SHOOTER_MOTOR_1);
-  private final static TalonFX Shooter2 = new TalonFX(Constants.SHOOTER_MOTOR_2);
+  private final static TalonFX mTopWheel = new TalonFX(Constants.SHOOTER_MOTOR_1);
+  private final static TalonFX mBottomWheel = new TalonFX(Constants.SHOOTER_MOTOR_2);
   
   public Shooter() {}
 
@@ -17,8 +17,8 @@ public class Shooter extends SubsystemBase {
     
   }
 
-  public void Shoot(double _Shoot_) {
-    Shooter1.set(_Shoot_);
-    Shooter2.set(_Shoot_);
+  public void setWheelSpeed(double speed) {
+    mTopWheel.set(speed);
+    mBottomWheel.set(speed);
   }
 }

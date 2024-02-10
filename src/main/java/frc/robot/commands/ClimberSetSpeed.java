@@ -1,17 +1,19 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.Climber;
 
 public class ClimberSetSpeed extends Command {
 
   private final Climber mClimber;
-  private final CommandJoystick mJoystick;
+  private final CommandXboxController mController;
+  private static double mSpeed;
   
-  public ClimberSetSpeed(Climber climber, CommandJoystick joystick) {
+  public ClimberSetSpeed(Climber climber, CommandXboxController controller, double speed) {
     mClimber = climber;
-    mJoystick = joystick;
+    mController = controller;
+    mSpeed = speed;
     addRequirements(mClimber);
   }
 
@@ -20,7 +22,21 @@ public class ClimberSetSpeed extends Command {
 
   @Override
   public void execute() {
-    mClimber.setMotorSpeeds(mJoystick.getY());
+    if (mController.leftBumper().getAsBoolean()) {
+      mClimber.setLeftMotorSpeed(mSpeed);
+    }
+
+    if (mController.leftTrigger().getAsBoolean()) {
+      mClimber.setLeftMotorSpeed(-mSpeed);
+    }
+
+    if (mController.rightBumper().getAsBoolean()) {
+      mClimber.setRightMotorSpeed(mSpeed);
+    }
+
+    if (mController.rightTrigger().getAsBoolean()) {
+      mClimber.setRightMotorSpeed(-mSpeed);
+    }
   }
 
   @Override

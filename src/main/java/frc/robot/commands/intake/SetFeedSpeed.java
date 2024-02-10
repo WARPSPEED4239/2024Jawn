@@ -19,7 +19,13 @@ public class SetFeedSpeed extends Command {
 
   @Override
   public void execute() {
-    mIntake.setFeedSpeed(mSpeed);
+    if (mIntake.getLimitDown()){
+      mIntake.setFeedSpeed(mSpeed);
+    }
+    
+    if (mIntake.getLimitUp()) {
+      mIntake.setFeedSpeed(-mSpeed);
+    }
   }
 
   @Override
