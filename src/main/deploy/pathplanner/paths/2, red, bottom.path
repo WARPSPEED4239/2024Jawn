@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 14.6,
-        "y": 4.15
+        "x": 15.88,
+        "y": 4.34
       },
       "prevControl": null,
       "nextControl": {
-        "x": 14.741421356237309,
-        "y": 4.29142135623731
+        "x": 15.683038449397559,
+        "y": 4.3052703644666135
       },
       "isLocked": false,
       "linkedName": null
@@ -32,16 +32,16 @@
     },
     {
       "anchor": {
-        "x": 14.6,
-        "y": 4.15
+        "x": 15.88,
+        "y": 4.34
       },
       "prevControl": {
-        "x": 14.400001632885264,
-        "y": 4.1508081778511245
+        "x": 15.680001632885265,
+        "y": 4.340808177851124
       },
       "nextControl": {
-        "x": 14.799998367114735,
-        "y": 4.149191822148876
+        "x": 16.079998367114737,
+        "y": 4.339191822148876
       },
       "isLocked": false,
       "linkedName": null
@@ -78,18 +78,13 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0,
-      "rotationDegrees": 45.0,
+      "waypointRelativePos": 2,
+      "rotationDegrees": -120.0,
       "rotateFast": false
     },
     {
       "waypointRelativePos": 1,
-      "rotationDegrees": 0.0,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 2,
-      "rotationDegrees": 45.0,
+      "rotationDegrees": 180.0,
       "rotateFast": false
     }
   ],
@@ -117,7 +112,59 @@
       }
     }
   ],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "Edge",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Shoot"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Blow",
+      "waypointRelativePos": 0.9,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Its Everywhere",
+      "waypointRelativePos": 2.0,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Shoot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -132,7 +179,7 @@
   "reversed": false,
   "folder": "Red Folder",
   "previewStartingState": {
-    "rotation": 0.0,
+    "rotation": -120.0,
     "velocity": 1.0
   },
   "useDefaultConstraints": true

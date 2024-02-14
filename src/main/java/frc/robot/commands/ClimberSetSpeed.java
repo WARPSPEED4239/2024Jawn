@@ -26,12 +26,16 @@ public class ClimberSetSpeed extends Command {
       mClimber.setLeftMotorSpeed(mSpeed);
     } else if (mController.leftTrigger().getAsBoolean()) {
       mClimber.setLeftMotorSpeed(-mSpeed);
+    } else {
+      mClimber.setLeftMotorSpeed(0);
     }
 
     if (mController.rightBumper().getAsBoolean()) {
       mClimber.setRightMotorSpeed(mSpeed);
     } else if (mController.rightTrigger().getAsBoolean()) {
       mClimber.setRightMotorSpeed(-mSpeed);
+    } else {
+      mClimber.setRightMotorSpeed(0);
     }
   }
 

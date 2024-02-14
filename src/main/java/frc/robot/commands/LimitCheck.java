@@ -1,17 +1,14 @@
-package frc.robot.commands.intake;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 
-public class SetFeedSpeed extends Command {
+public class LimitCheck extends Command {
 
   private final Intake mIntake;
-  private final double mSpeed;
   
-  public SetFeedSpeed (Intake intake, double speed) {
+  public LimitCheck(Intake intake) {
     mIntake = intake;
-    mSpeed = speed;
-    addRequirements(mIntake);
   }
 
   @Override
@@ -19,7 +16,13 @@ public class SetFeedSpeed extends Command {
 
   @Override
   public void execute() {
-    mIntake.setFeedSpeed(mSpeed);
+    if (mIntake.getLimitDown()) {
+      System.out.println("Limit Down On");
+    }
+
+    // if (mLimitUp.getLimitUp()) {
+    //   System.out.println("Limit Up On");
+    // }
   }
 
   @Override

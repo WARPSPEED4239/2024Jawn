@@ -1,0 +1,15 @@
+    XBOX CONTROLLER-
+        Left Joystick Button: [RESET ORIENTATION]
+        Left Bumper:          [LEFT CLIMBER UP]
+        Left Trigger:         [LEFT CLIMBER DOWN]
+        Right Bumper:         [RIGHT CLIMBER UP]
+        Right Trigger:        [RIGHT CLIMBER DOWN]
+
+    JOYSTICK-
+        Trigger:              [SHOOT HIGH]
+        Button 2:             [SHOOT LOW]
+        Button 3:             [FEED IN]
+        Button 4:             [FEED OUT]
+        Button 5:             [PIVOT UP]
+        Button 6:             [PIVOT DOWN]
+        Button 11:            [SHOOTER TO INTAKE COMMAND]

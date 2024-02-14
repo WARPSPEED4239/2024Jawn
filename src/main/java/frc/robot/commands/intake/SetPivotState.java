@@ -2,15 +2,18 @@ package frc.robot.commands.intake;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.LimitUp;
 
 public class SetPivotState extends Command {
 
   private final Intake mIntake;
+  private final LimitUp mLimitUp;
   private static double mSpeed;
   private static boolean mTargetState;
   
-  public SetPivotState(Intake intake, double speed) {
+  public SetPivotState(Intake intake, LimitUp limitup, double speed) {
     mIntake = intake;
+    mLimitUp = limitup;
     mSpeed = speed;
     addRequirements(mIntake);
   }
@@ -19,7 +22,7 @@ public class SetPivotState extends Command {
   public void initialize() {
     if (mIntake.getLimitDown()){
       mTargetState = true;
-    } else if (mIntake.getLimitUp()) {
+    } else if (mLimitUp.getLimitUp()) {
       mTargetState = false;
       mSpeed *= -1;
     }
@@ -27,8 +30,9 @@ public class SetPivotState extends Command {
 
   @Override
   public void execute() {
+    System.out.println(mIntake.getLimitDown());
     if (mTargetState) {
-      if (!mIntake.getLimitUp()) {
+      if (!mLimitUp.getLimitUp()) {
         mIntake.setPivotSpeed(mSpeed);
       } else {
         mIntake.setPivotSpeed(0.0);
@@ -43,7 +47,9 @@ public class SetPivotState extends Command {
   }
 
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    mIntake.stopPivotMotor();
+  }
 
   @Override
   public boolean isFinished() {

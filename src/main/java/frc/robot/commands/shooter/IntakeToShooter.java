@@ -24,12 +24,12 @@ public class IntakeToShooter extends Command {
 
   @Override
   public void execute() {
-    if (!mIntake.getLimitUp()) {
-      mIntake.setPivotSpeed(mIntakeSpeed);
-    } else {
-      mShooter.setWheelSpeed(mShooterSpeed);
-      mIntake.setFeedSpeed(mIntakeSpeed);
-    }
+    // if (!mIntake.getLimitUp()) {
+    //   mIntake.setPivotSpeed(mIntakeSpeed);
+    // } else {
+    //   mShooter.setWheelSpeed(mShooterSpeed);
+    //   mIntake.setFeedSpeed(mIntakeSpeed);
+    // }
   }
 
   @Override

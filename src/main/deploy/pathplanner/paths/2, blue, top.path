@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.0,
-        "y": 7.0
+        "x": 0.7,
+        "y": 6.73
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.5,
-        "y": 7.0
+        "x": 1.2736970928490694,
+        "y": 7.323065555222119
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.0,
+        "x": 2.299859145173174,
         "y": 7.0
       },
       "prevControl": {
-        "x": 3.4999999923845646,
-        "y": 7.000087266462156
+        "x": 2.108854605657556,
+        "y": 7.012449965859418
       },
       "nextControl": {
-        "x": 2.5000000076154367,
-        "y": 6.999912733537844
+        "x": 2.495762809707776,
+        "y": 6.987230701734231
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.0,
-        "y": 7.0
+        "x": 0.7,
+        "y": 6.73
       },
       "prevControl": {
-        "x": 2.5,
-        "y": 7.0
+        "x": 0.5907076697930781,
+        "y": 6.540700131204017
       },
       "nextControl": {
-        "x": 1.5,
-        "y": 7.0
+        "x": 0.78881534801587,
+        "y": 6.883832695255399
       },
       "isLocked": false,
       "linkedName": null
@@ -62,18 +62,13 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0,
-      "rotationDegrees": -140.0,
-      "rotateFast": false
-    },
-    {
       "waypointRelativePos": 1,
-      "rotationDegrees": 180.0,
+      "rotationDegrees": 0,
       "rotateFast": false
     },
     {
       "waypointRelativePos": 2,
-      "rotationDegrees": -140.0,
+      "rotationDegrees": 59.60470842591596,
       "rotateFast": false
     }
   ],
@@ -81,7 +76,7 @@
     {
       "name": "Shooting Zone",
       "minWaypointRelativePos": 0.0,
-      "maxWaypointRelativePos": 0.1,
+      "maxWaypointRelativePos": 0.05,
       "constraints": {
         "maxVelocity": 3.0,
         "maxAcceleration": 3.0,
@@ -101,7 +96,59 @@
       }
     }
   ],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "BLOW",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Shoot"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "SUCKY",
+      "waypointRelativePos": 1.0999999999999999,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "BLOW THE LOAD",
+      "waypointRelativePos": 2.0,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Shoot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -116,7 +163,7 @@
   "reversed": false,
   "folder": "Blue Folder",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": 60.0,
     "velocity": 1.0
   },
   "useDefaultConstraints": true

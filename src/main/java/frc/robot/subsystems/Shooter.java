@@ -14,6 +14,9 @@ public class Shooter extends SubsystemBase {
   public Shooter() {
     mTopWheel.setInverted(false);
     mTopWheel.setNeutralMode(NeutralModeValue.Coast);
+
+    mBottomWheel.setInverted(false);
+    mBottomWheel.setNeutralMode(NeutralModeValue.Coast);
   }
 
   @Override
@@ -22,5 +25,10 @@ public class Shooter extends SubsystemBase {
   public void setWheelSpeed(double speed) {
     mTopWheel.set(speed);
     mBottomWheel.set(speed);
+  }
+
+  public void stopWheels() {
+    mTopWheel.stopMotor();
+    mBottomWheel.stopMotor();
   }
 }

@@ -1,22 +1,26 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.drive.RobotDriveBase.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Intake extends SubsystemBase {
-
-  public final static TalonFX mFeedMotor = new TalonFX(Constants.INTAKE_MOTOR_FEED, "rio");
   public final static TalonFX mPivotMotor = new TalonFX(Constants.INTAKE_MOTOR_PIVOT, "rio");
   public final static DigitalInput mLimitDown = new DigitalInput(Constants.LIMIT_SWITCH_DOWN);
-  public final static DigitalInput mLimitUp = new DigitalInput(Constants.LIMIT_SWITCH_UP);
+  
+
+  public final static TalonSRX mFeedMotor = new TalonSRX(Constants.INTAKE_MOTOR_FEED);
 
   public Intake() {
     mFeedMotor.setInverted(false);
-    mFeedMotor.setNeutralMode(NeutralModeValue.Brake);
+    mFeedMotor.setNeutralMode(NeutralMode.Brake);
     mPivotMotor.setInverted(false);
     mPivotMotor.setNeutralMode(NeutralModeValue.Brake);
   }
@@ -25,7 +29,7 @@ public class Intake extends SubsystemBase {
   public void periodic() {}
 
   public void setFeedSpeed(double speed){
-    mFeedMotor.set(speed);
+    mFeedMotor.set(TalonSRXControlMode.Current, speed);
   }
 
   public void setPivotSpeed(double speed){
@@ -36,7 +40,9 @@ public class Intake extends SubsystemBase {
     return mLimitDown.get();
   }
 
-  public boolean getLimitUp() {
-    return mLimitUp.get();
+
+
+  public void stopPivotMotor() {
+    mPivotMotor.stopMotor();
   }
 }

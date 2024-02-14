@@ -3,12 +3,12 @@ package frc.robot.commands.shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Shooter;
 
-public class ShooterSetSpeed extends Command {
+public class ShooterSetSpeedCool extends Command {
 
   private static double mWheelSpeed;
   private final Shooter mShooter;
   
-  public ShooterSetSpeed(Shooter shooter, double speed) {
+  public ShooterSetSpeedCool(Shooter shooter, double speed) {
     System.out.println("Cconstructer");
     mShooter = shooter;
     mWheelSpeed = speed;

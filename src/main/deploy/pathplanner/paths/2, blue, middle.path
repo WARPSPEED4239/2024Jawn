@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.0,
-        "y": 5.5
+        "x": 1.37,
+        "y": 5.53
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.5,
-        "y": 5.5
+        "x": 0.8700000000000001,
+        "y": 5.53
       },
       "isLocked": false,
       "linkedName": null
@@ -20,27 +20,27 @@
         "y": 5.5
       },
       "prevControl": {
-        "x": 3.4999999923845646,
-        "y": 5.500087266462156
+        "x": 2.5,
+        "y": 5.5
       },
       "nextControl": {
-        "x": 2.5000000076154367,
-        "y": 5.499912733537844
+        "x": 3.4999999999999987,
+        "y": 5.5
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.0,
+        "x": 1.37,
         "y": 5.5
       },
       "prevControl": {
-        "x": 2.5,
+        "x": 0.8700000000000001,
         "y": 5.5
       },
       "nextControl": {
-        "x": 1.5,
+        "x": 1.87,
         "y": 5.5
       },
       "isLocked": false,
@@ -52,31 +52,15 @@
         "y": 7.0
       },
       "prevControl": {
-        "x": 6.348534878887744,
-        "y": 5.3
+        "x": 4.648534878887744,
+        "y": 7.0
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0,
-      "rotationDegrees": 180.0,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 1,
-      "rotationDegrees": 180.0,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 2,
-      "rotationDegrees": 180.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [
     {
       "name": "Shooting Zone",
@@ -101,7 +85,38 @@
       }
     }
   ],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "Blow",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    },
+    {
+      "name": "Suck",
+      "waypointRelativePos": 1.0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    },
+    {
+      "name": "Blow EVERYWHERE",
+      "waypointRelativePos": 1.85,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -116,7 +131,7 @@
   "reversed": false,
   "folder": "Blue Folder",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": 0.0,
     "velocity": 1.0
   },
   "useDefaultConstraints": true

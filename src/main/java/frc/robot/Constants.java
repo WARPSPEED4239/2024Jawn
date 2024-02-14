@@ -14,7 +14,7 @@ public class Constants {
         INTAKE_MOTOR_FEED = 19,
         INTAKE_MOTOR_PIVOT = 18,
         LIMIT_SWITCH_DOWN = 0,
-        LIMIT_SWITCH_UP = 0,
+        LIMIT_SWITCH_UP = 1,
 
         PIGEON_IMU = 13,
 
