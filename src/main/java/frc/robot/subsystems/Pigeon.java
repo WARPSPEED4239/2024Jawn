@@ -6,7 +6,7 @@ import frc.robot.Constants;
 
 public class Pigeon {
 
-  private final static Pigeon2 pigeon = new Pigeon2(Constants.PIGEON_IMU);
+  private final static Pigeon2 pigeon = new Pigeon2(Constants.PIGEON_IMU, "DriveTrain");
 
   
   public Pigeon() {}
