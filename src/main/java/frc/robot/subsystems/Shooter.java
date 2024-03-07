@@ -7,28 +7,26 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
+  private final TalonFX mTopMotor = new TalonFX(Constants.SHOOTER_TOP_MOTOR);
+  private final TalonFX mBottomMotor = new TalonFX(Constants.SHOOTER_BOTTOM_MOTOR);
 
-  private final static TalonFX mTopWheel = new TalonFX(Constants.SHOOTER_MOTOR_1, "rio");
-  private final static TalonFX mBottomWheel = new TalonFX(Constants.SHOOTER_MOTOR_2, "rio");
-  
   public Shooter() {
-    mTopWheel.setInverted(false);
-    mTopWheel.setNeutralMode(NeutralModeValue.Coast);
-
-    mBottomWheel.setInverted(false);
-    mBottomWheel.setNeutralMode(NeutralModeValue.Coast);
+    mTopMotor.setInverted(false);
+    mBottomMotor.setInverted(false);
+    mTopMotor.setNeutralMode(NeutralModeValue.Coast);
+    mBottomMotor.setNeutralMode(NeutralModeValue.Coast);
   }
 
   @Override
   public void periodic() {}
 
-  public void setWheelSpeed(double speed) {
-    mTopWheel.set(speed);
-    mBottomWheel.set(speed);
+  public void setWheelSpeed(double topSpeed, double bottomSpeed) {
+    mTopMotor.set(topSpeed);
+    mBottomMotor.set(bottomSpeed);
   }
 
-  public void stopWheels() {
-    mTopWheel.stopMotor();
-    mBottomWheel.stopMotor();
+  public void stopMotor() {
+    mTopMotor.stopMotor();
+    mBottomMotor.stopMotor();
   }
 }

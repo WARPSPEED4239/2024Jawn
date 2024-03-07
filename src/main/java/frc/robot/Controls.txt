@@ -8,8 +8,10 @@
     JOYSTICK-
         Trigger:              [SHOOT HIGH]
         Button 2:             [SHOOT LOW]
-        Button 3:             [FEED IN]
-        Button 4:             [FEED OUT]
-        Button 5:             [PIVOT UP]
-        Button 6:             [PIVOT DOWN]
+        Button 3:             [PIVOT OUT]
+        Button 4:             [PIVOT IN]
+        Button 5:             [FEED OUT]
+        Button 6:             [FEED IN]
+
+
         Button 11:            [SHOOTER TO INTAKE COMMAND]

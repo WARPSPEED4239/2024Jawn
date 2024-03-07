@@ -1,17 +1,17 @@
-package frc.robot.commands.shooter;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Shooter;
 
 public class ShooterSetSpeed extends Command {
-
-  private static double mWheelSpeed;
   private final Shooter mShooter;
-  
-  public ShooterSetSpeed(Shooter shooter, double speed) {
-    System.out.println("Cconstructer");
+  private final double mTopSpeed;
+  private final double mBottomSpeed;
+
+  public ShooterSetSpeed(Shooter shooter, double topSpeed, double bottomSpeed) {
     mShooter = shooter;
-    mWheelSpeed = speed;
+    mTopSpeed = topSpeed;
+    mBottomSpeed = bottomSpeed;
     addRequirements(mShooter);
   }
 
@@ -20,14 +20,13 @@ public class ShooterSetSpeed extends Command {
 
   @Override
   public void execute() {
-    System.out.println(mWheelSpeed);
-    mShooter.setWheelSpeed(mWheelSpeed);
+    mShooter.setWheelSpeed(mTopSpeed, mBottomSpeed);
   }
 
   @Override
   public void end(boolean interrupted) {
-    System.out.println("Command Ended");
-    mShooter.stopWheels();
+    mShooter.setWheelSpeed(0, 0);
+    mShooter.stopMotor();
   }
 
   @Override

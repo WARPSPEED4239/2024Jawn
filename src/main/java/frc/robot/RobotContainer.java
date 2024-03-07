@@ -1,28 +1,39 @@
 package frc.robot;
 
 import com.ctre.phoenix6.Utils;
-import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
+import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.commands.ClimberSetSpeed;
+import frc.robot.commands.ClimberLeftSetSpeed;
+import frc.robot.commands.ClimberRightSetSpeed;
 import frc.robot.commands.CommandSwerveDrivetrain;
-import frc.robot.commands.LimitCheck;
-import frc.robot.commands.intake.SetFeedSpeed;
-import frc.robot.commands.intake.SetPivotState;
-import frc.robot.commands.shooter.IntakeToShooter;
-import frc.robot.commands.shooter.ShooterSetSpeed;
-import frc.robot.commands.shooter.ShooterSetSpeedCool;
-import frc.robot.subsystems.Climber;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.LimitUp;
+import frc.robot.commands.IntakePivotSetPosition;
+import frc.robot.commands.IntakePivotSetSpeed;
+import frc.robot.commands.IntakeSetFeedMotorSpeed;
+import frc.robot.commands.JawnsonMotorSetPosition;
+import frc.robot.commands.JawnsonMotorSetSpeed;
+import frc.robot.commands.ShooterSetSpeed;
+import frc.robot.commands.LED.ChangeLEDColor;
+import frc.robot.subsystems.ClimberLeft;
+import frc.robot.subsystems.ClimberRight;
+import frc.robot.subsystems.IntakeFeed;
+import frc.robot.subsystems.IntakePivot;
+import frc.robot.subsystems.JawnsonFlap;
+import frc.robot.subsystems.LEDController;
 import frc.robot.subsystems.Shooter;
 import frc.robot.tools.Telemetry;
 import frc.robot.tools.generated.TunerConstants;
@@ -34,10 +45,6 @@ public class RobotContainer {
   private final CommandXboxController mXboxController = new CommandXboxController(Constants.XBOX_CONTROLLER);
   private final CommandJoystick mJoystick = new CommandJoystick(Constants.JOYSTICK);
   private final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain;
-  private final LimitUp mLimitUp = new LimitUp();
-  private final Climber mClimber = new Climber(); 
-  private final Shooter mShooter = new Shooter();
-  private final Intake mIntake = new Intake();
 
   private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
   private final SwerveRequest.PointWheelsAt point = new SwerveRequest.PointWheelsAt();
@@ -46,35 +53,96 @@ public class RobotContainer {
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage);
   private final Telemetry logger = new Telemetry(MaxSpeed);
 
+  private final Shooter mShooter = new Shooter();
+  private final IntakeFeed mIntakeFeed = new IntakeFeed();
+  private final ClimberLeft mClimberLeft = new ClimberLeft();
+  private final ClimberRight mClimberRight = new ClimberRight();
+  private final JawnsonFlap mJawnsonFlap = new JawnsonFlap();
+  private final LEDController mLEDController = new LEDController();
+  private final IntakePivot mIntakePivot = new IntakePivot();
+
   private final SendableChooser<Command> autoChooser;
 
-  private void configureBindings() { 
-    // use to get access to Pose2D
-    System.out.println(drivetrain.getState().Pose);
-    
+  public RobotContainer() {
+    NamedCommands.registerCommand("Shoot", new ParallelCommandGroup(new IntakeSetFeedMotorSpeed(mIntakeFeed, -1.0), 
+                                                                         new ShooterSetSpeed(mShooter, 0.65, 0.65)));
+
+    NamedCommands.registerCommand("ShootStop", new ParallelCommandGroup(new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.0), 
+                                                                             new ShooterSetSpeed(mShooter, 0.0, 0.0)));                                                       
+                                                                           
+    NamedCommands.registerCommand("Intake", new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.7));
+
+    NamedCommands.registerCommand("Inta$keStops", new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.0));
+
+    NamedCommands.registerCommand("PivotIn", new IntakePivotSetPosition(mIntakePivot, -1.0, 0.3));
+
+    NamedCommands.registerCommand("PivotOut", new IntakePivotSetPosition(mIntakePivot, -42.0, -0.4));
+
+    mShooter.setDefaultCommand(new ShooterSetSpeed(mShooter, 0.0, 0.0));
+    mIntakeFeed.setDefaultCommand(new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.0));
+    mClimberLeft.setDefaultCommand(new ClimberLeftSetSpeed(mClimberLeft, 0.0));
+    mClimberRight.setDefaultCommand(new ClimberRightSetSpeed(mClimberRight, 0.0));
+    mJawnsonFlap.setDefaultCommand(new JawnsonMotorSetPosition(mJawnsonFlap, 5, .25));
+    mLEDController.setDefaultCommand(new ChangeLEDColor(mLEDController, 0, 255, 0));
+    mIntakePivot.setDefaultCommand(new IntakePivotSetSpeed(mIntakePivot, 0.0));
+
+    autoChooser = AutoBuilder.buildAutoChooser();
+
+    UsbCamera mainCamera = CameraServer.startAutomaticCapture();
+    mainCamera.setResolution(320, 240);
+    mainCamera.setFPS(10);
+
+    configureBindings();
+  }
+
+  private void configureBindings() {
+    SmartDashboard.putData("Auto Chooser", autoChooser);
+
+    mJoystick.button(1).whileTrue(new ParallelCommandGroup(new ShooterSetSpeed(mShooter, 0.8, 0.8), 
+                                                                  new IntakeSetFeedMotorSpeed(mIntakeFeed, -1.0)));
+
+    mJoystick.button(2).whileTrue(new ParallelCommandGroup(new SequentialCommandGroup(new WaitCommand(0.5),
+                                                                                             new IntakeSetFeedMotorSpeed(mIntakeFeed, -0.45)),
+                                                                  new ShooterSetSpeed(mShooter, 0.125, 0.125))); 
+
+    mJoystick.button(2).onFalse(new JawnsonMotorSetPosition(mJawnsonFlap, 60.0, 0.15));
+    mJoystick.button(3).whileTrue(new IntakePivotSetPosition(mIntakePivot, -38.0, -0.4));
+    mJoystick.button(4).whileTrue(new IntakePivotSetPosition(mIntakePivot, -1.0, 0.3));
+    mJoystick.button(5).whileTrue(new IntakeSetFeedMotorSpeed(mIntakeFeed, -1.0));
+    mJoystick.button(6).whileTrue(new IntakeSetFeedMotorSpeed(mIntakeFeed, 1.0));
+    mJoystick.button(8).whileTrue(new JawnsonMotorSetPosition(mJawnsonFlap, 85, -0.25));
+    mJoystick.button(10).whileTrue(new JawnsonMotorSetPosition(mJawnsonFlap, 85, -0.25));
+    mJoystick.button(12).whileTrue(new JawnsonMotorSetPosition(mJawnsonFlap, 85, -0.25));
+    mJoystick.button(7).whileTrue(new JawnsonMotorSetSpeed(mJawnsonFlap, 0.25));
+    mJoystick.button(9).whileTrue(new JawnsonMotorSetSpeed(mJawnsonFlap, 0.25));
+    mJoystick.button(11).whileTrue(new JawnsonMotorSetSpeed(mJawnsonFlap, 0.25));
+    mJoystick.povCenter().whileTrue(new JawnsonMotorSetPosition(mJawnsonFlap, 5, .25));
+
+    mJoystick.button(4).and(mJoystick.button(0));
+
+    mJoystick.button(7).whileTrue(new IntakePivotSetSpeed(mIntakePivot, -0.03));
+
+    mXboxController.leftTrigger().whileTrue(new ClimberLeftSetSpeed(mClimberLeft, 0.5));
+    mXboxController.rightTrigger().whileTrue(new ClimberRightSetSpeed(mClimberRight, 0.5));
+    mXboxController.leftBumper().whileTrue(new ClimberLeftSetSpeed(mClimberLeft, -0.5));
+    mXboxController.rightBumper().whileTrue(new ClimberRightSetSpeed(mClimberRight, -0.5));
+
+    mXboxController.povLeft().onTrue(new ChangeLEDColor(mLEDController, 150, 150, 0));
+    mXboxController.povRight().onTrue(new ChangeLEDColor(mLEDController, 0, 0, 25));
+    mXboxController.povUp().onTrue(new ChangeLEDColor(mLEDController, 0, 255, 0));
+    mXboxController.povDown().onTrue(new ChangeLEDColor(mLEDController, 100, 0, 100));
+
     drivetrain.setDefaultCommand(
         drivetrain.applyRequest(() -> drive.withVelocityX(-mXboxController.getLeftY() * MaxSpeed)             // -y forward
                                            .withVelocityY(-mXboxController.getLeftX() * MaxSpeed)             // -x forward
                                            .withRotationalRate(-mXboxController.getRightX() * MaxAngularRate) // -x counterclockwise
                                ));              
-                               
-    mClimber.setDefaultCommand(new ClimberSetSpeed(mClimber, mXboxController, 0.05));
-    //mIntake.setDefaultCommand(new LimitCheck(mIntake));
     
     mXboxController.a().whileTrue(drivetrain.applyRequest(() -> brake));
     mXboxController.b().whileTrue(drivetrain
                        .applyRequest(() -> point.withModuleDirection(new Rotation2d(-mXboxController.getLeftY(), -mXboxController.getLeftX()))));
 
-    mXboxController.leftStick().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
-    //mXboxController.leftStick().onFalse()
-
-    mJoystick.button(3).whileTrue(new SetFeedSpeed(mIntake, 0.15));
-    //mJoystick.button(4).whileTrue(new SetFeedSpeed(mIntake, -0.15));
-    //mJoystick.button(11).whileTrue(new IntakeToShooter(mIntake, mShooter, 0.05, 0.05));
-    mJoystick.button(2).whileTrue(new ShooterSetSpeed(mShooter, 0.20));
-    mJoystick.trigger().whileTrue(new ShooterSetSpeedCool(mShooter, 0.45));
-    mJoystick.button(5).whileTrue(new SetPivotState(mIntake, mLimitUp, 0.05));
-    //mJoystick.button(6).whileTrue(new SetPivotState(mIntake, -0.025));
+    mXboxController.start().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
 
     if (Utils.isSimulation()) {
       drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));
@@ -83,23 +151,8 @@ public class RobotContainer {
     drivetrain.registerTelemetry(logger::telemeterize);
   }
 
-  public RobotContainer() {
-    configureBindings();
-    autoChooser = AutoBuilder.buildAutoChooser();
-
-    SmartDashboard.putData("Test Auto", autoChooser);
-    SmartDashboard.putData("Spin hee hee hee haw", autoChooser);
-  }
-
   public Command getAutonomousCommand() {
+    System.out.print(autoChooser.getSelected());
     return autoChooser.getSelected();
-  }
-
-  public final Intake getIntake() {
-    return mIntake;
-  }
-
-  public final LimitUp getLimitUp() {
-    return mLimitUp;
   }
 }
