@@ -3,9 +3,24 @@
   "robotLength": 1.0,
   "holonomicMode": true,
   "pathFolders": [
-    "Blue"
+    "4 Note",
+    "6 Note",
+    "Blue",
+    "Blue Bottom",
+    "Blue Collect",
+    "Defense",
+    "Red"
   ],
-  "autoFolders": [],
+  "autoFolders": [
+    "4 Note",
+    "6 Note",
+    "Blue Auto",
+    "Both Sides",
+    "Defense",
+    "New Folder",
+    "Collect",
+    "Red Auto"
+  ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,

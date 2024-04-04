@@ -3,32 +3,38 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.4,
-        "y": 7.0
+        "x": 2.6,
+        "y": 4.48
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.4,
-        "y": 7.0
+        "x": 2.221641329472284,
+        "y": 4.8134753903497085
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.68,
-        "y": 6.79
+        "x": 1.4,
+        "y": 5.55
       },
       "prevControl": {
-        "x": 1.5460254037844385,
-        "y": 7.29
+        "x": 1.7057565421034249,
+        "y": 5.257474271656951
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": -39.67534538223007,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
@@ -47,23 +53,46 @@
           ]
         }
       }
+    },
+    {
+      "name": "IntakeSafety",
+      "waypointRelativePos": 0.0,
+      "command": {
+        "type": "race",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            },
+            {
+              "type": "wait",
+              "data": {
+                "waitTime": 0.5
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.5,
-    "maxAcceleration": 1.0,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 1.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 60.0,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue",
+  "folder": "4 Note",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": -37.872892899928914,
     "velocity": 0
   },
   "useDefaultConstraints": false

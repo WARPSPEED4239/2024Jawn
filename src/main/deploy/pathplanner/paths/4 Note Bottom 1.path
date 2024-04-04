@@ -8,32 +8,38 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.4000000000000012,
-        "y": 5.55
+        "x": 1.8379276830110018,
+        "y": 5.0371890368109895
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.4547263405796946,
-        "y": 5.55
+        "x": 2.6015831638103353,
+        "y": 4.479133108534554
       },
       "prevControl": {
-        "x": 1.4547263405796946,
-        "y": 5.55
+        "x": 2.205069741087604,
+        "y": 4.86096084893422
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": -39.67534538223007,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "PivotOut",
-      "waypointRelativePos": 0.0,
+      "waypointRelativePos": 0,
       "command": {
         "type": "sequential",
         "data": {
@@ -50,7 +56,7 @@
     },
     {
       "name": "IntakeIn",
-      "waypointRelativePos": 0.75,
+      "waypointRelativePos": 0.55,
       "command": {
         "type": "race",
         "data": {
@@ -64,7 +70,7 @@
             {
               "type": "wait",
               "data": {
-                "waitTime": 0.85
+                "waitTime": 1.25
               }
             }
           ]
@@ -80,11 +86,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": -35.8821372462042,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue",
+  "folder": "4 Note",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

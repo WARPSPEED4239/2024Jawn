@@ -1,0 +1,25 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.7218158264581296,
+      "y": 4.317590602980848
+    },
+    "rotation": -60.36161631184864
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Blue Far Path 1"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Blue Auto",
+  "choreoAuto": false
+}

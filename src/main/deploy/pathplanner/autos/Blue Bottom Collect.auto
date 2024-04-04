@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4,
-      "y": 5.55
+      "x": 0.75,
+      "y": 4.317590602980848
     },
-    "rotation": 0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
@@ -33,13 +33,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Middle Path 1"
+            "pathName": "Blue Bottom 1"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Middle Path 2"
+            "pathName": "Blue Bottom 2"
           }
         },
         {
@@ -64,12 +64,37 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Middle Path 3"
+            "pathName": "Blue Bottom 3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Blue Bottom 4"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 1.0
+                }
+              }
+            ]
           }
         }
       ]
     }
   },
-  "folder": "Both Sides",
+  "folder": "Collect",
   "choreoAuto": false
 }

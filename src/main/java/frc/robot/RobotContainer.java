@@ -40,7 +40,7 @@ import frc.robot.tools.generated.TunerConstants;
                                                                                                               // of the date 1/30/2024, Daniel Kale Pauff owes Samuel "Big Sam" Oswood 140 USD in two weeks time.
 public class RobotContainer {
   private double MaxSpeed = 3.0;                                                                              // 6 meters/second
-  private double MaxAngularRate = 1.5 * Math.PI;                                                              // .75 rotation/second
+  private double MaxAngularRate = 1.5 * Math.PI;    //1.5 before                                                          // .75 rotation/second
 
   private final CommandXboxController mXboxController = new CommandXboxController(Constants.XBOX_CONTROLLER);
   private final CommandJoystick mJoystick = new CommandJoystick(Constants.JOYSTICK);
@@ -65,18 +65,18 @@ public class RobotContainer {
 
   public RobotContainer() {
     NamedCommands.registerCommand("Shoot", new ParallelCommandGroup(new IntakeSetFeedMotorSpeed(mIntakeFeed, -1.0), 
-                                                                         new ShooterSetSpeed(mShooter, 0.65, 0.65)));
+                                                                         new ShooterSetSpeed(mShooter, 0.7, 0.7)));
 
     NamedCommands.registerCommand("ShootStop", new ParallelCommandGroup(new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.0), 
                                                                              new ShooterSetSpeed(mShooter, 0.0, 0.0)));                                                       
                                                                            
-    NamedCommands.registerCommand("Intake", new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.7));
+    NamedCommands.registerCommand("Intake", new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.78));
 
-    NamedCommands.registerCommand("Inta$keStops", new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.0));
+    NamedCommands.registerCommand("IntakeStops", new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.0));
 
-    NamedCommands.registerCommand("PivotIn", new IntakePivotSetPosition(mIntakePivot, -1.0, 0.3));
+    NamedCommands.registerCommand("PivotIn", new IntakePivotSetPosition(mIntakePivot, 1.0, 0.3));
 
-    NamedCommands.registerCommand("PivotOut", new IntakePivotSetPosition(mIntakePivot, -42.0, -0.4));
+    NamedCommands.registerCommand("PivotOut", new IntakePivotSetPosition(mIntakePivot, -42.0, -0.45));
 
     mShooter.setDefaultCommand(new ShooterSetSpeed(mShooter, 0.0, 0.0));
     mIntakeFeed.setDefaultCommand(new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.0));
@@ -106,8 +106,8 @@ public class RobotContainer {
                                                                   new ShooterSetSpeed(mShooter, 0.125, 0.125))); 
 
     mJoystick.button(2).onFalse(new JawnsonMotorSetPosition(mJawnsonFlap, 60.0, 0.15));
-    mJoystick.button(3).whileTrue(new IntakePivotSetPosition(mIntakePivot, -38.0, -0.4));
-    mJoystick.button(4).whileTrue(new IntakePivotSetPosition(mIntakePivot, -1.0, 0.3));
+    mJoystick.button(3).whileTrue(new IntakePivotSetPosition(mIntakePivot, -39.5, -0.4));
+    mJoystick.button(4).whileTrue(new IntakePivotSetPosition(mIntakePivot, 1.0, 0.3));
     mJoystick.button(5).whileTrue(new IntakeSetFeedMotorSpeed(mIntakeFeed, -1.0));
     mJoystick.button(6).whileTrue(new IntakeSetFeedMotorSpeed(mIntakeFeed, 1.0));
     mJoystick.button(8).whileTrue(new JawnsonMotorSetPosition(mJawnsonFlap, 85, -0.25));
@@ -154,5 +154,9 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     System.out.print(autoChooser.getSelected());
     return autoChooser.getSelected();
+  }
+
+  public IntakePivot getIntakePivot() {
+    return mIntakePivot;
   }
 }

@@ -33,6 +33,37 @@
         {
           "type": "path",
           "data": {
+            "pathName": "4 Note Top 1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4 Note Top 2"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 1.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
             "pathName": "Blue Middle Path 1"
           }
         },
@@ -64,12 +95,37 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Middle Path 3"
+            "pathName": "4 Note Bottom 1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4 Note Bottom 2"
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shoot"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 1.0
+                }
+              }
+            ]
           }
         }
       ]
     }
   },
-  "folder": "Both Sides",
+  "folder": "4 Note",
   "choreoAuto": false
 }
