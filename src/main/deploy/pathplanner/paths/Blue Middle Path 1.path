@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.4,
+        "x": 1.3973572133190786,
         "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.4000000000000012,
+        "x": 1.8973572133190786,
         "y": 5.55
       },
       "isLocked": false,
@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 2.4547263405796946,
+        "x": 2.5,
         "y": 5.55
       },
       "prevControl": {
-        "x": 1.4547263405796946,
-        "y": 5.55
+        "x": 2.0000724091677218,
+        "y": 5.54149095042709
       },
       "nextControl": null,
       "isLocked": false,
@@ -50,7 +50,7 @@
     },
     {
       "name": "IntakeIn",
-      "waypointRelativePos": 0.75,
+      "waypointRelativePos": 0.0,
       "command": {
         "type": "race",
         "data": {
@@ -64,7 +64,7 @@
             {
               "type": "wait",
               "data": {
-                "waitTime": 0.85
+                "waitTime": 10.0
               }
             }
           ]
@@ -73,8 +73,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 1.5,
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
@@ -84,7 +84,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Blue",
+  "folder": "4 Note",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

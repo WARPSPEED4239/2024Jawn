@@ -20,8 +20,8 @@
         "y": 1.5713680085678599
       },
       "prevControl": {
-        "x": 13.041900798505711,
-        "y": 1.7453893682766308
+        "x": 12.666909328637836,
+        "y": 1.6061722805096141
       },
       "nextControl": {
         "x": 12.479413593703896,
@@ -36,8 +36,24 @@
         "y": 0.04405704696919324
       },
       "prevControl": {
-        "x": 8.44887839749337,
-        "y": -0.3138454987173571
+        "x": 8.314912004758153,
+        "y": -0.04541858945244431
+      },
+      "nextControl": {
+        "x": 8.22560107626801,
+        "y": 0.1335326833908308
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.270256540513081,
+        "y": 7.705544138361004
+      },
+      "prevControl": {
+        "x": 8.284256206586313,
+        "y": 7.606528940790945
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,48 +62,7 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "pivotout",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "sequential",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "PivotOut"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "intake",
-      "waypointRelativePos": 1.3,
-      "command": {
-        "type": "race",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Intake"
-              }
-            },
-            {
-              "type": "wait",
-              "data": {
-                "waitTime": 3.0
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.0,
     "maxAcceleration": 4.0,
@@ -100,7 +75,7 @@
     "rotateFast": true
   },
   "reversed": false,
-  "folder": "Red",
+  "folder": "Defense",
   "previewStartingState": {
     "rotation": -120.0,
     "velocity": 0

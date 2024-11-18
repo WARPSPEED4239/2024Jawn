@@ -48,6 +48,8 @@ public class IntakePivot extends SubsystemBase {
     return mLimitIn.get();
   }
 
+  
+
   public boolean getLimitOut() {
     return mLimitOut.get();
   }

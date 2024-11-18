@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.75,
-      "y": 4.317590602980848
+      "x": 15.818697254568033,
+      "y": 4.361647649950041
     },
-    "rotation": -60.0
+    "rotation": -120.0
   },
   "command": {
     "type": "sequential",
@@ -33,44 +33,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Bottom 1"
+            "pathName": "Red Far 5"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Blue Bottom 2"
-          }
-        },
-        {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shoot"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.0
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Blue Bottom 3"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Blue Bottom 4"
+            "pathName": "Red Far 6"
           }
         },
         {
@@ -95,6 +64,6 @@
       ]
     }
   },
-  "folder": "Collect",
+  "folder": "Red Auto",
   "choreoAuto": false
 }

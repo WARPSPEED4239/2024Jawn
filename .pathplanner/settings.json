@@ -4,21 +4,19 @@
   "holonomicMode": true,
   "pathFolders": [
     "4 Note",
-    "6 Note",
     "Blue",
     "Blue Bottom",
     "Blue Collect",
     "Defense",
+    "V4",
     "Red"
   ],
   "autoFolders": [
+    "2 Note",
     "4 Note",
-    "6 Note",
     "Blue Auto",
     "Both Sides",
     "Defense",
-    "New Folder",
-    "Collect",
     "Red Auto"
   ],
   "defaultMaxVel": 3.0,

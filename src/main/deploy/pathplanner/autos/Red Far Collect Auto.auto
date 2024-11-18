@@ -5,7 +5,7 @@
       "x": 15.818697254568033,
       "y": 4.332276285303912
     },
-    "rotation": -120.0
+    "rotation": -117.89727103094745
   },
   "command": {
     "type": "sequential",
@@ -34,31 +34,6 @@
           "type": "path",
           "data": {
             "pathName": "Red Far 1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Red Far 2"
-          }
-        },
-        {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shoot"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.0
-                }
-              }
-            ]
           }
         }
       ]

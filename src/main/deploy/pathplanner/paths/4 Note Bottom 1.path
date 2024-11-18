@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8379276830110018,
-        "y": 5.0371890368109895
+        "x": 1.734565303179429,
+        "y": 5.178427587261303
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.6015831638103353,
-        "y": 4.479133108534554
+        "x": 2.56,
+        "y": 4.26
       },
       "prevControl": {
-        "x": 2.205069741087604,
-        "y": 4.86096084893422
+        "x": 2.176977778440511,
+        "y": 4.58139380484327
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,7 +31,7 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.5,
-      "rotationDegrees": -39.67534538223007,
+      "rotationDegrees": -40.0,
       "rotateFast": false
     }
   ],
@@ -56,7 +56,7 @@
     },
     {
       "name": "IntakeIn",
-      "waypointRelativePos": 0.55,
+      "waypointRelativePos": 0.5,
       "command": {
         "type": "race",
         "data": {
@@ -70,7 +70,7 @@
             {
               "type": "wait",
               "data": {
-                "waitTime": 1.25
+                "waitTime": 1.0
               }
             }
           ]
@@ -86,7 +86,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -35.8821372462042,
+    "rotation": -40.0,
     "rotateFast": false
   },
   "reversed": false,

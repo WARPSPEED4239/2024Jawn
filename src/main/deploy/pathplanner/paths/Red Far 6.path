@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.56,
-        "y": 4.26
+        "x": 8.73,
+        "y": 2.45
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.181629078914062,
-        "y": 4.593461490443754
+        "x": 8.766466714461755,
+        "y": 2.051665744962394
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.4,
-        "y": 5.55
+        "x": 12.34,
+        "y": 1.79
       },
       "prevControl": {
-        "x": 1.7213938048432693,
-        "y": 5.16697777844051
+        "x": 11.856277777215443,
+        "y": 1.6634582630735337
+      },
+      "nextControl": {
+        "x": 12.823722222784557,
+        "y": 1.9165417369264661
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 15.82,
+        "y": 4.33
+      },
+      "prevControl": {
+        "x": 16.01429680709093,
+        "y": 3.6673635337968356
       },
       "nextControl": null,
       "isLocked": false,
@@ -47,47 +63,24 @@
           ]
         }
       }
-    },
-    {
-      "name": "IntakeSafety",
-      "waypointRelativePos": 0.15,
-      "command": {
-        "type": "race",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Intake"
-              }
-            },
-            {
-              "type": "wait",
-              "data": {
-                "waitTime": 0.75
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 2.25,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": -120.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "4 Note",
+  "folder": "Red",
   "previewStartingState": {
-    "rotation": -40.0,
-    "velocity": 0
+    "rotation": 180.0,
+    "velocity": 0.0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

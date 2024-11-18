@@ -24,7 +24,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.0
+                  "waitTime": 0.3
                 }
               }
             ]
@@ -55,7 +55,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.0
+                  "waitTime": 0.3
                 }
               }
             ]
@@ -86,7 +86,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.0
+                  "waitTime": 0.3
                 }
               }
             ]
@@ -117,38 +117,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.0
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "6 Note Middle 1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "6 Note Middle 2"
-          }
-        },
-        {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Shoot"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.0
+                  "waitTime": 0.3
                 }
               }
             ]
@@ -157,6 +126,6 @@
       ]
     }
   },
-  "folder": "6 Note",
+  "folder": "4 Note",
   "choreoAuto": false
 }

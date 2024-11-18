@@ -2,24 +2,30 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.769944812616898,
-      "y": 4.365853095342555
+      "x": 0.5455876385813603,
+      "y": 1.9531957489675267
     },
-    "rotation": -59.66503087520198
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
+          "type": "wait",
+          "data": {
+            "waitTime": 10.0
+          }
+        },
+        {
           "type": "path",
           "data": {
-            "pathName": "Defense Blue"
+            "pathName": "Straight Path"
           }
         }
       ]
     }
   },
-  "folder": "Defense",
+  "folder": null,
   "choreoAuto": false
 }

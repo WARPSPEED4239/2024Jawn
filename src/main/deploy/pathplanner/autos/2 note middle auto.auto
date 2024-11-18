@@ -2,7 +2,7 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4,
+      "x": 1.3973572133190786,
       "y": 5.55
     },
     "rotation": 0
@@ -60,16 +60,10 @@
               }
             ]
           }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Blue Middle Path 3"
-          }
         }
       ]
     }
   },
-  "folder": "Both Sides",
+  "folder": "2 Note",
   "choreoAuto": false
 }

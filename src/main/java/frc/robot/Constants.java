@@ -22,4 +22,7 @@ public class Constants {
         PIGEON_IMU = 13,
 
         SRX_UNITS_PER_ROTATION = 4096;
+    public static final double
+        DRIVE_CURRENT_LIMIT = 35,
+        ANGLE_CURRENT_LIMIT = 25;
 }

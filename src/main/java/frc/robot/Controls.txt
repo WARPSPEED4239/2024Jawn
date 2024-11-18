@@ -1,5 +1,5 @@
     XBOX CONTROLLER-
-        Left Joystick Button: [RESET ORIENTATION]
+        Button Menu: [RESET ORIENTATION]
         Left Bumper:          [LEFT CLIMBER UP]
         Left Trigger:         [LEFT CLIMBER DOWN]
         Right Bumper:         [RIGHT CLIMBER UP]
@@ -12,6 +12,10 @@
         Button 4:             [PIVOT IN]
         Button 5:             [FEED OUT]
         Button 6:             [FEED IN]
+
+        Button 8:
+        Button 10:
+        Button 12:
 
 
         Button 11:            [SHOOTER TO INTAKE COMMAND]

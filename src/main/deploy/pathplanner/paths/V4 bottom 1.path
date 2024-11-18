@@ -3,41 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.818697254568033,
-        "y": 4.332276285303912
+        "x": 1.4,
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.96893701468977,
-        "y": 3.656734898442963
+        "x": 1.4,
+        "y": 5.25
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 12.573161461170866,
-        "y": 1.5713680085678599
+        "x": 2.6,
+        "y": 4.2
       },
       "prevControl": {
-        "x": 13.041900798505711,
-        "y": 1.7453893682766308
-      },
-      "nextControl": {
-        "x": 12.479413593703896,
-        "y": 1.5365637366261056
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 8.270256540513081,
-        "y": 0.04405704696919324
-      },
-      "prevControl": {
-        "x": 8.44887839749337,
-        "y": -0.3138454987173571
+        "x": 2.0955647626640257,
+        "y": 4.2
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,7 +32,7 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "pivotout",
+      "name": "PivotOut",
       "waypointRelativePos": 0,
       "command": {
         "type": "sequential",
@@ -65,8 +49,8 @@
       }
     },
     {
-      "name": "intake",
-      "waypointRelativePos": 1.3,
+      "name": "IntakeIn",
+      "waypointRelativePos": 0.65,
       "command": {
         "type": "race",
         "data": {
@@ -80,7 +64,7 @@
             {
               "type": "wait",
               "data": {
-                "waitTime": 3.0
+                "waitTime": 1.0
               }
             }
           ]
@@ -89,20 +73,20 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 4.0,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 1.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
-    "rotateFast": true
+    "rotation": 0.0,
+    "rotateFast": false
   },
   "reversed": false,
-  "folder": "Red",
+  "folder": "V4",
   "previewStartingState": {
-    "rotation": -120.0,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": false
