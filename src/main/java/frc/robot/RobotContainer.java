@@ -40,7 +40,7 @@ import frc.robot.tools.generated.TunerConstants;
                                                                                                               // of the date 1/30/2024, Daniel Kale Pauff owes Samuel "Big Sam" Oswood 140 USD in two weeks time.
 public class RobotContainer {
   private double MaxSpeed = 3.0;                                                                              // 6 meters/second
-  private double MaxAngularRate = 1.5 * Math.PI;                                                              // .75 rotation/second
+  private double MaxAngularRate = 1.5 * Math.PI;                                                             // .75 rotation/second
 
   private final CommandXboxController mXboxController = new CommandXboxController(Constants.XBOX_CONTROLLER);
   private final CommandJoystick mJoystick = new CommandJoystick(Constants.JOYSTICK);
@@ -65,7 +65,7 @@ public class RobotContainer {
 
   public RobotContainer() {
     NamedCommands.registerCommand("Shoot", new ParallelCommandGroup(new IntakeSetFeedMotorSpeed(mIntakeFeed, -1.0), 
-                                                                         new ShooterSetSpeed(mShooter, 0.65, 0.65)));
+                                                                         new ShooterSetSpeed(mShooter, 0.85, 0.85)));
 
     NamedCommands.registerCommand("ShootStop", new ParallelCommandGroup(new IntakeSetFeedMotorSpeed(mIntakeFeed, 0.0), 
                                                                              new ShooterSetSpeed(mShooter, 0.0, 0.0)));                                                       
@@ -98,7 +98,7 @@ public class RobotContainer {
   private void configureBindings() {
     SmartDashboard.putData("Auto Chooser", autoChooser);
 
-    mJoystick.button(1).whileTrue(new ParallelCommandGroup(new ShooterSetSpeed(mShooter, 0.8, 0.8), 
+    mJoystick.button(1).whileTrue(new ParallelCommandGroup(new ShooterSetSpeed(mShooter, 0.85, 0.85), 
                                                                   new IntakeSetFeedMotorSpeed(mIntakeFeed, -1.0)));
 
     mJoystick.button(2).whileTrue(new ParallelCommandGroup(new SequentialCommandGroup(new WaitCommand(0.5),
